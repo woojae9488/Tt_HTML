@@ -4,33 +4,9 @@
 <head>
     <title>WEB1 - JavaScript</title>
     <meta charset="utf-8">
-    <script>
-        function LinksSetColor(color) {
-            var alist = document.querySelectorAll('a');
-            for (var i = 0; i < alist.length; i++) {
-                console.log(alist[i]);
-                alist[i].style.color = color;
-            }
-        }
-
-        function nightDayHandler(self) {
-            var target = document.querySelector('body');
-            if (self.value === 'night') {
-                target.style.backgroundColor = 'black';
-                target.style.color = 'white';
-                self.value = 'day';
-
-                LinksSetColor('powderblue');
-            } else {
-                target.style.backgroundColor = 'white';
-                target.style.color = 'black';
-                self.value = 'night';
-
-                LinksSetColor('blue');
-            }
-        }
-        }
-    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="colors.js"></script>
 </head>
 
 <body>
