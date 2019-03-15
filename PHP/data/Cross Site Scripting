@@ -1,0 +1,4 @@
+XSS 
+<script>
+location.href="https://opentutorials.org/course/";
+</script>
