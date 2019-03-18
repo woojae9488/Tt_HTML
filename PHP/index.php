@@ -9,7 +9,7 @@ require_once('view/top.php');
     <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
     <input type="submit" value="delete">
 </form>
-<?php 
+<?php
 } ?>
 <h2>
     <?php
@@ -21,4 +21,4 @@ print_description();
 ?>
 </body>
 
-</html> 
+</html>
