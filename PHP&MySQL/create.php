@@ -1,3 +1,32 @@
+<?php
+$conn = mysqli_connect(
+    'localhost',
+    'root',
+    '00000000',
+    'opentutorial',
+    '3307'
+);
+$sql = "SELECT * FROM topic LIMIT 100";
+
+$result = mysqli_query($conn, $sql);
+if (!$result) {
+    echo "정보 불러오기 실패!!";
+    error_log(mysqli_error($conn));
+}
+
+$list = "";
+while ($row = mysqli_fetch_array($result)) {
+    // <li><a href="index.php?id=11">HTML</a></li>
+    $escaped_title = htmlspecialchars($row['title']);
+    $list = $list . "<li><a href=\"index.php?id={$row['id']}\">{$escaped_title}</a></li>";
+}
+
+$article = array(
+    'title' => 'Welcome',
+    'description' => 'Hello, WEB'
+);
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -7,9 +36,9 @@
 </head>
 
 <body>
-    <h1>WEB</h1>
+    <h1><a href="index.php">WEB</a></h1>
     <ol>
-        <li>HTML</li>
+        <?= $list ?>
     </ol>
     <form action="process_create.php" method="POST">
         <p><input type="text" name="title" placeholder="title"></p>

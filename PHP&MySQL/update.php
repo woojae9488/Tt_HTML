@@ -26,7 +26,6 @@ $article = array(
     'description' => 'Hello, WEB'
 );
 $update_link = '';
-$delete_link = '';
 if (isset($_GET['id'])) {
     $filtered_id = mysqli_real_escape_string($conn, $_GET['id']);
     $sql = "SELECT * FROM topic WHERE id ={$filtered_id} LIMIT 100";
@@ -37,12 +36,6 @@ if (isset($_GET['id'])) {
 
 
     $update_link = '<a href="update.php?id=' . $_GET['id'] . '">update</a>';
-    $delete_link = '
-    <form action="process_delete.php" method="post">
-    <input type="hidden" name="id" value="' . $_GET['id'] . '">
-    <input type="submit" value="delete">
-    </form>
-    ';
 }
 ?>
 
@@ -59,11 +52,12 @@ if (isset($_GET['id'])) {
     <ol>
         <?= $list ?>
     </ol>
-    <a href="create.php">create</a>
-    <?= $update_link ?>
-    <?= $delete_link ?>
-    <h2><?= $article['title'] ?></h2>
-    <?= $article['description'] ?>
+    <form action="process_update.php" method="POST">
+        <input type="hidden" name="id" value="<?= $_GET['id'] ?>">
+        <p><input type="text" name="title" placeholder="title" value="<?= $article['title'] ?>"></p>
+        <p><textarea name="description" placeholder="description"><?= $article['description'] ?></textarea></p>
+        <p><input type="submit"></p>
+    </form>
 </body>
 
 </html> 
