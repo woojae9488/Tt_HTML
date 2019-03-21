@@ -10,12 +10,14 @@ $conn = mysqli_connect(
 
 $filtered = array(
     'title' => mysqli_real_escape_string($conn, $_POST['title']),
-    'description' => mysqli_real_escape_string($conn, $_POST['description'])
+    'description' => mysqli_real_escape_string($conn, $_POST['description']),
+    'author_id' => mysqli_real_escape_string($conn, $_POST['author_id'])
 );
 $sql = "
-INSERT INTO topic(title, description, created)
-VALUES('{$_POST['title']}','{$_POST['description']}',NOW())
+INSERT INTO topic(title, description, created, author_id)
+VALUES('{$filtered['title']}','{$filtered['description']}',NOW(), {$filtered['author_id']})
 ";
+
 if (!mysqli_query($conn, $sql)) {
     echo '저장하는 과정에 문제 발생!!';
     error_log(mysqli_error($conn)); // write error to apache error log
