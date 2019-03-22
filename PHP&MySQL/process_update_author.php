@@ -11,20 +11,20 @@ $conn = mysqli_connect(
 settype($_POST['id'], 'integer');
 $filtered = array(
     'id' => mysqli_real_escape_string($conn, $_POST['id']),
-    'title' => mysqli_real_escape_string($conn, $_POST['title']),
-    'description' => mysqli_real_escape_string($conn, $_POST['description'])
+    'name' => mysqli_real_escape_string($conn, $_POST['name']),
+    'profile' => mysqli_real_escape_string($conn, $_POST['profile'])
 );
 $sql = "
-UPDATE topic SET 
-title = '{$filtered['title']}',
-description = '{$filtered['description']}'
+UPDATE author SET 
+name = '{$filtered['name']}',
+profile = '{$filtered['profile']}'
 WHERE id = {$filtered['id']}
 ";
 if (!mysqli_query($conn, $sql)) {
     echo '갱신하는 과정에 문제 발생!!';
     error_log(mysqli_error($conn)); // write error to apache error log
 } else {
-    header("Location: index.php");
+    header("Location: author.php?id=" . $filtered['id']);
     // echo $sql;
 }
 ?>

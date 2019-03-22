@@ -37,7 +37,6 @@ if (isset($_GET['id'])) {
     $article['description'] = htmlspecialchars($row['description']);
     $article['name'] = htmlspecialchars($row['name']);
 
-
     $update_link = '<a href="update.php?id=' . $_GET['id'] . '">update</a>';
     $delete_link = '
     <form action="process_delete.php" method="post">
@@ -59,11 +58,12 @@ if (isset($_GET['id'])) {
 
 <body>
     <h1><a href="index.php">WEB</a></h1>
+    <a href="author.php">author</a>
     <ol>
         <?= $list ?>
     </ol>
-    <a href="create.php">create</a>
-    <?= $update_link ?>
+    <p><a href="create.php">create</a></p>
+    <p><?= $update_link ?></p>
     <?= $delete_link ?>
     <h2><?= $article['title'] ?></h2>
     <?= $article['description'] ?>
