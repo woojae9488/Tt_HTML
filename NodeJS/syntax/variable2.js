@@ -1,0 +1,2 @@
+var letter = 'Lorem egoing ipsum dolor, sit amet consectetur adipisicing elit. egoing Necessitatibus, impedit nulla minus est, asperiores porro similique reiciendis architecto, id provident blanditiis itaque egoing. Quisquam egoing inventore magnam expedita obcaecati harum aliquam maxime.';
+console.log(letter);
