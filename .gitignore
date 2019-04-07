@@ -1,0 +1,7 @@
+# Data Directory
+Data/
+node_modules/
+*.json
+*.docx
+*.hwp
+*.txt
