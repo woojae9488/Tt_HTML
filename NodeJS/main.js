@@ -3,6 +3,7 @@ var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
 var path = require('path');
+var sanitizeHtml = require('sanitize-html');
 var template = require('./lib/template');
 // refactoring
 
@@ -28,10 +29,12 @@ var app = http.createServer(function (request, response) {
         description = 'Hello, Node.js';
         control = `<a href="/create">create</a>`;
       }
+      var sanitizedTitle = sanitizeHtml(title);
+      var sanitizedDescription = sanitizeHtml(description);
       fs.readdir('./Data/', function (error, fileList) {
         var list = template.list(fileList);
-        var html = template.html(title, list,
-          `<h2>${title}</h2>${description}`, control);
+        var html = template.html(sanitizedTitle, list,
+          `<h2>${sanitizedTitle}</h2>${sanitizedDescription}`, control);
         response.writeHead(200);
         response.end(html);
       });
